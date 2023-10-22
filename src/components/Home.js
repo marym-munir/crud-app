@@ -58,6 +58,8 @@ getUserData();
               <ListItem 
               user = {user}
               index = {index}
+              data = {data}
+              onDeleteSuccess = {(data)=>setData(data)}
               />
             )
         })}
