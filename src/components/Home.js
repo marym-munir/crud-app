@@ -7,7 +7,17 @@ const Home = () => {
     const [data , setData] = useState([]);
     const [searchValue , setSearchvalue] = useState('');
     const navigate = useNavigate();
-    
+    const searchUser = ()=>{
+       const newUsersInfo = data.filter((user,index)=>{
+            // console.log("==>userDataSingleOject",user)
+            const str =user.firstName +user.lastName+user.email;
+            // console.log("==>userString",str);
+        if(str.toLowerCase().includes(searchValue)){
+        return user;
+    }
+        })
+        return newUsersInfo;
+    }
     //function that get data by API request
 
     const getUserData = ()=>{
@@ -21,7 +31,10 @@ const Home = () => {
                     console.log('get user Data error',error)
                 })
     }
-    
+
+useEffect(()=>{
+searchUser();
+},[searchValue])
     useEffect(()=>{
 getUserData();
     },[])
@@ -53,7 +66,7 @@ getUserData();
                 <th scope='col'>Action</th>
             </tr>
         </thead>
-        {data.map((user,index)=>{
+        {searchUser().length > 0 ?( searchUser().map((user,index)=>{
             return(
               <ListItem 
               user = {user}
@@ -62,7 +75,7 @@ getUserData();
               onDeleteSuccess = {(x)=>setData(x)}
               />
             )
-        })}
+        })):<h2>No Matching information is find</h2>}
 
     </table>
     </>
