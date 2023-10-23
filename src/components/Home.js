@@ -11,7 +11,7 @@ const Home = () => {
     //function that get data by API request
 
     const getUserData = ()=>{
-        axios.get('https://65350319c620ba9358ec12ae.mockapi.io/userInfo').then(
+        axios.get('https://65350319c620ba9358ec12ae.mockapi.io/users').then(
             (response)=>{
                 console.log('get user Data response',response)
                 setData(response.data)
@@ -59,7 +59,7 @@ getUserData();
               user = {user}
               index = {index}
               data = {data}
-              onDeleteSuccess = {(data)=>setData(data)}
+              onDeleteSuccess = {(x)=>setData(x)}
               />
             )
         })}
