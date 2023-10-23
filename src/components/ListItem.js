@@ -8,15 +8,12 @@ const ListItem = (props) => {
     const handleDeleteUser = (userId) =>{
       axios.delete(`https://65350319c620ba9358ec12ae.mockapi.io/userInfo/${userId}`).then((response)=>{
        console.log('delete user response',response);
-      // const tempData = data?.filter((item)=>item.id !== userId);
-      // onDeleteSuccess(tempData);
+      const tempData = data?.filter((item)=>item.id !== userId);
+      onDeleteSuccess(tempData);
       navigate('/')
       }).catch((error)=>{
         console.log('delete user response',error);
-      })
-
-
-      
+      })   
     }
   return (
     <>
