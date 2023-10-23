@@ -16,9 +16,6 @@ const ListItem = (props) => {
       navigate('/')
       }).catch((error)=>{
         console.log('delete user response',error);
-<<<<<<< HEAD
-      })   
-=======
       })      
     }
 
@@ -28,7 +25,6 @@ const ListItem = (props) => {
         str = str + '*'
       }
       return str;
->>>>>>> 60953156b270686b35eb08d709cb27ea983fe200
     }
   return (
     <>
