@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const ListItem = (props) => {
     const {user,index,data,onDeleteSuccess} = props;
@@ -8,6 +8,7 @@ const ListItem = (props) => {
     const [passwordVisibilty, setPasswordVisibililty] = useState(false);
     
     const navigate = useNavigate();
+    const {state} = useLocation();
     const handleDeleteUser = (userId) =>{
       axios.delete(`https://65350319c620ba9358ec12ae.mockapi.io/users/${userId}`).then((response)=>{
        console.log('delete user response',response);
@@ -42,6 +43,11 @@ const ListItem = (props) => {
                           style={{height:'25px',width:'25px'}}
                           onClick={()=>handleDeleteUser(user.id)}
                           />
+                           <img
+                src=" https://cdn3.iconfinder.com/data/icons/feather-5/24/edit-512.png"
+                style={{ height: "25px", width: "25px" }}
+                onClick={() =>navigate('/manageUser',{state :user.id})}
+              />
                         </td>
                     </tr>
                 </tbody>

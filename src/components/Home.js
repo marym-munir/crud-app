@@ -7,19 +7,20 @@ const Home = () => {
     const [data , setData] = useState([]);
     const [searchValue , setSearchvalue] = useState('');
     const navigate = useNavigate();
+    
     const searchUser = ()=>{
        const newUsersInfo = data.filter((user,index)=>{
             // console.log("==>userDataSingleOject",user)
-            const str =user.firstName +user.lastName+user.email;
+            const str = user.firstName + user.lastName + user.email;
             // console.log("==>userString",str);
         if(str.toLowerCase().includes(searchValue)){
-        return user;
+        return user; 
     }
         })
         return newUsersInfo;
     }
-    //function that get data by API request
 
+    //function that get data by API request
     const getUserData = ()=>{
         axios.get('https://65350319c620ba9358ec12ae.mockapi.io/users').then(
             (response)=>{
@@ -35,9 +36,11 @@ const Home = () => {
 useEffect(()=>{
 searchUser();
 },[searchValue])
+
     useEffect(()=>{
 getUserData();
     },[])
+
   return (
     <>
     <div className='d-flex justify-content-between m-4'>
@@ -50,7 +53,7 @@ getUserData();
       />
       <button 
       className='btn btn-primary'
-      onClick={()=>navigate('/addUser')}
+      onClick={()=>navigate('/manageUser')}
       >
         Create User
         </button>

@@ -1,8 +1,7 @@
-import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter as Router , Routes,Route} from 'react-router-dom';
+import {BrowserRouter as Router , Routes, Route} from 'react-router-dom';
 import Home from './components/Home';
-import AddUser from './components/AddUser';
+import ManageUser from './components/ManageUser';
 function App() {
   return (
     <>
@@ -10,9 +9,10 @@ function App() {
       <Routes>
       
         <Route path = {'/'} element = {<Home/>}></Route>
-        <Route path = {'/addUser'} element = {<AddUser/>}></Route>
+        <Route path = {'/manageUser'} element = {<ManageUser/>}></Route>
       </Routes>
     </Router>
+  
     </>
   );
 }
